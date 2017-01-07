@@ -267,7 +267,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     }
   })
   .state('app.add-component', {
-    url: '/add-component',
+    url: '/add-component/:facilityId',
     views: {
       'menuContent': {
         templateUrl: 'templates/add-component.html',

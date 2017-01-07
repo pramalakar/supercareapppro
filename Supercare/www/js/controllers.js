@@ -337,7 +337,7 @@ angular.module('starter.controllers', [])
 	};
 })
 
-.controller('AddremoveComponentCtrl', function($scope, $stateParams, FileService, Facilities, $ionicPopup, $ionicListDelegate, FIREBASE_URL) {
+.controller('AddremoveComponentCtrl', function($scope, $state, $stateParams, FileService, Facilities, $ionicPopup, $ionicListDelegate, FIREBASE_URL) {
 	$scope.components = [];
 	$scope.$on('$ionicView.enter', function() {
       	$scope.facility = JSON.parse($stateParams.selectedFacility);
@@ -373,6 +373,10 @@ angular.module('starter.controllers', [])
 	     	}
 	   	});
     	$ionicListDelegate.closeOptionButtons();
+    }
+
+    $scope.gotoAddComponent = function(){
+    	$state.go('app.add-component', {facilityId: $scope.facility.id});
     }
 })
 
@@ -451,8 +455,8 @@ angular.module('starter.controllers', [])
  		});
  	}
 })
-.controller('AddComponentCtrl', function($scope, $cordovaDevice, $cordovaFile, $ionicPlatform, $cordovaEmailComposer, $ionicActionSheet, ImageService, FileService, Facilities, FIREBASE_URL, $ionicPopup) {
-
+.controller('AddComponentCtrl', function($scope, $stateParams, $cordovaDevice, $cordovaFile, $ionicPlatform, $cordovaEmailComposer, $ionicActionSheet, ImageService, FileService, Facilities, FIREBASE_URL, $ionicPopup) {
+	var facilityId = $stateParams.facilityId;
 	$scope.$on('$ionicView.leave', function() {
       	// clear the image from localStorage
       	FileService.removeImages();
@@ -509,7 +513,7 @@ angular.module('starter.controllers', [])
  	// Store to firebase
  	$scope.addComponent = function(newComponent){
  		var img = $scope.images[0].imgData;
- 		Facilities.addComponent(newComponent, img)
+ 		Facilities.addComponent(facilityId, newComponent, img) //add newComponent and img in facilityId
  		.then(function(data){
  			if(data){
  				var alertPopup = $ionicPopup.alert({
