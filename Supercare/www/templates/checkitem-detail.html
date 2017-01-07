@@ -1,0 +1,53 @@
+<ion-view id="report-detail" view-title="Report Detail">
+  	<ion-content>
+  		<section class = "home-container">
+	    	<div class = "row header">
+				<img src="data:image/png;base64,{{room.image}}">
+	        </div>
+
+			<ion-list can-swipe="true">
+				<a class="item item-divider">
+				    Maintanence Report
+				</a>
+				<a class="item item-icon-left" href="#">
+				    <i class="icon fa fa-qrcode fa-2x" aria-hidden="true"></i>
+				    	Room Code
+				    <span class="item-note">
+				      	{{room.code}}
+				    </span>
+				</a>
+				<a class="item item-icon-left" href="#">
+				    <i class="icon fa fa-map-marker fa-2x" aria-hidden="true"></i>
+				    	Address
+				    <span class="item-note">
+				      	{{room.location}} {{room.address}}
+				    </span>
+				</a>
+				<a class="item item-icon-left" href="#">
+				    <i ng-if="room.checked == 'true'" class="icon positive fa fa-check-circle-o fa-2x" aria-hidden="true"></i>
+					<i ng-if="room.checked == 'false' && !daysAgo(room.date)" class="icon energized fa fa-check-circle-o fa-2x" aria-hidden="true"></i>
+					<i ng-if="room.checked == 'false' && daysAgo(room.date)" class="icon assertive fa fa-check-circle-o fa-2x" aria-hidden="true"></i>
+				    	Status
+				    <span class="item-note">
+				      	<p ng-if="room.checked == 'true'">Check Completed</p>
+				     	<p ng-if="room.checked == 'false' && !daysAgo(room.date)">Check Required</p>
+				     	<p ng-if="room.checked == 'false' && daysAgo(room.date)">Check Overdue</p>
+				    </span>
+				</a>
+				<a class="item item-icon-left" href="#">
+				    <i class="icon fa fa-clock-o fa-2x" aria-hidden="true"></i>
+				    <span am-time-ago="room.date"></span>
+				</a>
+				<ion-item>
+				   <ion-label floating>Description</ion-label>
+				   <textarea ng-model="room.description" rows="6" style="width: 100%;"></textarea>
+				 </ion-item>
+				<!-- <p class="padding">{{room.description}}</p> -->
+				<!-- <a class="item item-icon-left" href="#">
+				    <i class="icon fa fa-info fa-2x" aria-hidden="true"></i>
+				    	Description
+				</a> -->
+			</ion-list>
+	    </section>      
+  	</ion-content>
+</ion-view>

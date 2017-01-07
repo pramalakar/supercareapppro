@@ -1,0 +1,22 @@
+<ion-view id="facility" view-title="Facility">
+    <ion-content>
+        <section class="home-container">
+            <ion-slides  options="options" slider="data.slider">
+              <ion-slide-page>
+                <img ng-src="/img/logo.jpg" />[logo]
+              </ion-slide-page>
+            </ion-slides>
+        </section>
+    </ion-content>
+    <div class="row icon-row unlimited-items bar bar-footer">
+        <div class="col-33 text-center" ng-repeat="facility in facilities">
+            <button class="button button-clear btn-icon" data-ng-click="gotoComponent(facility)">
+               <img src="data:image/png;base64,{{facility.image}}">
+               {{facility.name}}
+            </button>
+        </div>
+    </div>
+</ion-view>
+<!-- <button class="button button-block button-positive btnSquare" data-ng-click="gotoComponent(facility)">
+		       {{facility.name}}
+		    </button> -->

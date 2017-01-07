@@ -1,0 +1,40 @@
+<ion-modal-view id="login">
+  <ion-content class="padding center"  has-bouncing="true">
+    <div class="logo">
+      <img src="img/logo.jpg" alt="logo">
+    </div>
+    <form name="loginform" novalidate>
+      <div class="list">
+          <label class="item item-input" style="border:none;">
+            <i class="inputIconLeft fa fa-envelope" aria-hidden="true"></i>
+            <input type="text" name="username" placeholder="Username" class="center" ng-model="credentials.username" ng-required="true">
+            <p class="error validationerror" ng-show="loginform.username.$invalid && loginform.username.$touched">Must be a valid email</p>
+          </label>
+          <label class="item item-input" style="border:none;">
+            <i class="inputIconLeft fa fa-unlock-alt" aria-hidden="true"></i>
+            <input type="password" name="password" placeholder="Password" class="center" ng-model="credentials.password" ng-required="true">
+            <p class="error validationerror" ng-show="loginform.password.$invalid && loginform.password.$touched">Must be a valid email</p>
+          </label>
+      </div>
+      <a class="button button-block button-positive" type="submit" ng-click="login()">Login</a><!-- href="#/app/home" -->
+      <p>{{message}}</p>
+    </form>
+
+    <div class="button-bar">
+      <a class="button button-clear text-black" ng-click="">Forget Password?</a>
+      <a class="button button-clear text-black" ng-href="#/app/register">Register</a>
+    </div>
+
+    <br><br>
+    <div class="button-bar">
+      <a class="button icon-left ion-social-facebook facebook text-white" data-ng-click="loginFacebook()">Login with Facebook</a>
+      <a class="button icon-left ion-social-google google text-white" ng-click="loginGoogle()">Login with Google</a>
+    </div>
+      
+  </ion-content>
+<!--   <ion-footer-bar class="bar-positive tablewrap">
+    <div class="tablecell valignmiddle">
+        <span class="">&#169; 2016 Malakar &#174;</span>
+    </div>
+  </ion-footer-bar> -->
+</ion-modal-view>

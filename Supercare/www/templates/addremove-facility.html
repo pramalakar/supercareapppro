@@ -1,0 +1,33 @@
+<ion-view view-title="Add/Remove Facility">
+    <ion-nav-buttons side="right">
+        <a class="button" menu-toggle="right"  ng-href="#/app/add-facility">Add</a>
+    </ion-nav-buttons>
+
+
+    <ion-content class="has-header has-tabs-bottom">
+        <section class = "home-container">
+            <div class = "row header">
+                <div class = "text-center">
+                  <h2> [ Add / Remove Facility ] </h2>
+                </div>
+            </div>
+            <ion-list can-swipe="true" class="list">
+                
+               <!--  <a class="item item-thumbnail-left-left item-button-right">
+                    <img src="data:image/jpg;base64,{{image.imgData}}">
+                </a> -->
+                
+                <ion-item class="item item-thumbnail-left" ng-repeat="facility in facilities" data-ng-click="gotoComponent(facility)">
+                    <img src="data:image/jpeg;base64,{{facility.image}}">
+                    <h2>{{facility.name}}</h2>
+                    <span ng-repeat="component in facility.components">{{component.name}}  </span>
+
+
+                    <ion-option-button class="button-assertive" ng-click="delete(facility.id, $index)">
+                        <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
+                    </ion-option-button>
+                </ion-item>
+            </ion-list>
+        </section>
+    </ion-content>
+</ion-view>

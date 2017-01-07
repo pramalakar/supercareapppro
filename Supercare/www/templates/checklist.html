@@ -1,0 +1,64 @@
+<ion-view view-title="Location Checklist">
+	<ion-nav-buttons side="right">
+        <a 
+            class="button icon-right ion-ios-arrow-forward"
+            menu-toggle="right"  ng-click="scanBarcode()">
+            <!-- <i class="fa fa-qrcode fa-2x" style="clear:both;display: block;" aria-hidden="true"></i> -->QR Scan
+        </a>
+    </ion-nav-buttons>
+  	<ion-content>
+  		<section class = "home-container">
+	    	<!-- <div class = "row header">
+				<div class = "col col-33 col-offset-33 text-center">
+					<a class="btnSquare" ng-click="scanBarcode()"><i class="fa fa-qrcode fa-2x" style="clear:both;display: block;" aria-hidden="true"></i>QR Scan</a>
+	            </div>
+	        </div> -->
+
+			<ion-list can-swipe="true" class="has-header">
+				<div class="tabs-striped tabs-top tabs-background-positive tabs-color-light">
+				    <div class="tabs custom-tabs">
+				    	<a class="tab-item" href="#" ng-click="showAll()">
+					        <!-- <i class="icon ion-home"></i> -->
+					        All
+				     	</a>
+				      	<a class="tab-item" href="#" ng-click="showCheckRequired()">
+					        <!-- <i class="icon ion-home"></i> -->
+					        Pending
+				      	</a>
+				      	<a class="tab-item" href="#" ng-click="showCheckCompleted()">
+		<!-- 		        <i class="icon ion-star"></i>
+		 -->		        Checked
+				      	</a>
+				    </div>
+				</div>
+
+			    <ion-item class="item item-thumbnail-left item-icon-right" ng-repeat="item in checklist | filter: { checked : filterValue, code: roomCode }" data-ng-click="gotoCheckitemDetail(item)">
+			      	<img src="data:image/png;base64,{{item.image}}" style="background-color: #000;">
+			      	<h2>{{item.code}}</h2>
+			      	<span class="item-note">
+			      	<!--   ng-class="{'note-positive' : item.checked == 'true', 'item-energized' : item.checked == 'false' && !daysAgo(item.date), 'item-assertive' : item.checked == 'false' && daysAgo(item.date)}" -->
+				     	<p ng-if="item.checked == 'true'"><i class="positive fa fa-check-circle-o fa-2x" aria-hidden="true"></i></p>
+				     	<p ng-if="item.checked == 'false' && !daysAgo(item.date)"><i class="energized fa fa-clock-o fa-2x" aria-hidden="true"></i></p>
+				     	<p ng-if="item.checked == 'false' && daysAgo(item.date)"><i class="assertive fa fa-calendar-o fa-2x" aria-hidden="true"></i></p>
+				    </span>
+
+			      	<p>{{item.address}}</p>
+			      	<p>{{item.description}}</p>
+			      	<span am-time-ago="item.date"></span>
+			      	<p>{{item.message}}</p>
+			      	
+			    	<ion-option-button ng-if="item.checked == 'false' && barcodeScanned[item.code] == 'true'" class="button-positive" ng-click="check(item.id, $index)">
+			    		<i class="fa fa-check-circle fa-2x" aria-hidden="true"></i>Checked
+			    	</ion-option-button>
+			    	<ion-option-button ng-if="item.checked == 'true'" class="button-energized" ng-click="uncheck(item.id, $index)">
+			    		<i class="fa fa-times-circle fa-2x" aria-hidden="true"></i>Uncheck
+			    	</ion-option-button>
+			    	<ion-option-button class="button-assertive" ng-click="delete(item.id, $index)">
+			    		<i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
+			    	</ion-option-button>
+			    </ion-item>
+
+			</ion-list>
+	    </section>      
+  	</ion-content>
+</ion-view>

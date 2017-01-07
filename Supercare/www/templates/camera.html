@@ -1,0 +1,35 @@
+<ion-view id="camera" view-title="Take Photo">
+    <ion-content class="has-header padding">
+      <section class = "home-container">
+            <!-- <div class = "row header">
+              <h2>[ PHOTO ] </h2>
+            </div> -->
+            <ion-slides  options="options" slider="data.slider">
+              <a class="button button-clear btnCamera" ng-click="addMedia()"><i class="fa fa-camera fa-2x" style="clear:both;display: block;" aria-hidden="true"></i><span>{{uploadImageText()}}<span></a>
+              <ion-slide-page ng-repeat="image in fileURI">
+                <img ng-src="{{image}}" />
+                <button class="button button-assertive btnDelete" ng-click="deleteImage($index)">
+                  <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
+                </button>
+              </ion-slide-page>
+            </ion-slides>
+            <!-- <div class="row"> -->
+              <!-- <div class="col-offset-33"  style="text-align:center;">
+                <a class="button button-block button-clear button-camera" ng-click="addMedia()"><i class="fa fa-camera fa-2x" style="clear:both;display: block;" aria-hidden="true"></i>Add image</a>
+              </div> -->
+            <!-- </div> -->
+          
+            <div class="list list-inset">
+              <ion-item>
+                <textarea type="text" ng-model="room.description" placeholder="Write a description or something" rows="8" style="width: 100%;"></textarea>
+              </ion-item>
+              <button class="button button-block button-positive" ng-click="openMailComposer()">
+              <i ng-show="{{done}}" class="fa fa-check-circle fa-2x" aria-hidden="true"></i>Done</button>
+            </div>
+            
+           <!--  <ion-scroll direction="x" style="height:200px; min-height: 200px; overflow: scroll; white-space: nowrap;">
+              <img ng-repeat="image in fileURI" ng-src="{{image}}" style="height:200px; padding: 5px 5px 5px 5px;" ng-click="deleteImage($index)" />
+            </ion-scroll> -->
+        </section>        
+    </ion-content>
+</ion-view>

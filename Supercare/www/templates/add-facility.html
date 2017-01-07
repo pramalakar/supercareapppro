@@ -1,0 +1,30 @@
+<ion-view view-title="Add Facility">
+    <ion-item menu-close href="#/app/addFacility" class="item item-icon-left">
+        Add Facility
+    </ion-item>
+
+    <ion-content class="has-header has-tabs-bottom">
+        <section class = "home-container">
+            <div class = "row header">
+                <div class = "text-center">
+                  <h2> [ Add Facility ] </h2>
+                </div>
+            </div>
+            <div class="list">
+                <a class="item item-button-left item-button-right">
+                    <button class="button button-positive" ng-click="addMedia()">
+                        <i class="fa fa-camera fa-2x" aria-hidden="true"></i>
+                    </button>
+                    <input type="text" ng-model="newFacility" placeholder="Enter New Facility">
+                    <!-- <input type="text" placeholder="Facility Name" ng-model="newFacility"> -->
+                    <button class="button button-positive" ng-click="addFacility(newFacility)">
+                        Add
+                    </button>
+                </a>
+            </div>
+            <ion-scroll direction="x" style="height:200px; min-height: 200px; overflow: scroll; white-space: nowrap;">
+              <img ng-repeat="image in images" ng-src="{{'data:image/jpeg;base64,'+image['imgData']}}" style="height:200px; padding: 5px 5px 5px 5px;" ng-click="deleteImage($index)"/>
+            </ion-scroll>
+        </section>
+    </ion-content>
+</ion-view>

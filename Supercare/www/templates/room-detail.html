@@ -1,0 +1,41 @@
+<ion-view id="room-detail" view-title="Room Detail">
+  <ion-content class="center">
+    <section class = "home-container">
+      <div class = "row header">
+        <div class = "col text-center">
+          <p>Continue if room information is correct</p>
+        </div>
+      </div>
+
+      <div class="list list-inset text-left">
+        <a class="item">
+          Room Code
+          <span class="item-note">
+            {{room.code}}
+          </span>
+        </a>
+        <a class="item">
+          Type
+          <span class="item-note">
+            {{room.type}}
+          </span>
+        </a>
+        <a class="item">
+          Location
+          <span class="item-note">
+            {{room.location}}
+          </span>
+        </a>
+        <a class="item">
+          Address
+          <span class="item-note">
+            {{room.address}}
+          </span>
+        </a>
+        <button class="button button-block button-positive" data-ng-click="gotoFacility()">
+        Continue
+      </button>
+      </div>
+    </section>
+  </ion-content>
+</ion-view>

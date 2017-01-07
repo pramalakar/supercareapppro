@@ -1,0 +1,13 @@
+{
+  "name": "supercare",
+  "app_id": "bf51d79a",
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*",
+    "!www/**/*.map"
+  ]
+}

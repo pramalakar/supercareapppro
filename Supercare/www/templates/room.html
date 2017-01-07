@@ -1,0 +1,53 @@
+<ion-view  id="room" view-title="Room">
+  <ion-content class="padding">
+
+    <div class="row">
+      <div class="col col-33 col-offset-33"  style="text-align:center;">
+        <a class="btnSquare" ng-click="scanBarcode()"><i class="fa fa-qrcode fa-2x" style="clear:both;display: block;" aria-hidden="true"></i>QR Scan</a>
+      </div>
+    </div>
+
+    <div class="list list-inset">
+      <div class="item item-text-wrap">
+        <form name="form" novalidate>
+          <div class="list">
+          
+           <!--  <button class="button button-positive button-large button-outline" ng-click="scanBarcode()">
+              <i class="fa fa-qrcode fa-2x" aria-hidden="true"></i>
+            </button> -->
+
+              <label class="item item-input" style="border:none;">
+                  <input type="text" name="room" placeholder="Room Code/Name" class="text-center" ng-model="room.code" ng-required="true">
+                  <p class="error validationerror" ng-show="room.code.$invalid && room.code.$touched">Must be a valid code</p>
+              </label>
+  <!--             <label class="item item-input item-select">
+                <div class="input-label">
+                  Type
+                </div>
+                <select ng-model="room.type">
+                  <option selected>Type</option>
+                  <option>Common/Public Areas</option>
+                  <option>Boardrooms/Meeting Rooms</option>
+                  <option>Bathrooms</option>
+                  <option>Kitchens</option>
+                  <option>Offices</option>
+                  <option>Admin Area</option>
+                  <option>Stairwells/Elevators</option>
+                  <option>Lobby/Reception/Entry</option>
+                </select>
+              </label>
+              <label class="item item-input" style="border:none;">
+                  <input type="text" name="location" placeholder="Location" class="center" ng-model="room.location" ng-required="true">
+                  <p class="error validationerror" ng-show="room.location.$invalid && room.location.$touched">Must be a valid location</p>
+              </label>
+              <label class="item item-input" style="border:none;">
+                  <input type="text" name="address" placeholder="Address" class="center" ng-model="room.address" ng-required="true">
+                  <p class="error validationerror" ng-show="room.address.$invalid && room.address.$touched">Must be a valid address</p>
+              </label> -->
+          </div>
+          <a class="button button-block button-positive" ng-click="gotoRoomDetail()">Next</a>
+        </form>
+      </div>
+    </div>    
+  </ion-content>
+</ion-view>

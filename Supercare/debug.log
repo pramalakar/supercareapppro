@@ -1,0 +1,14 @@
+[1218/213810:ERROR:process_info.cc(330)] VirtualQueryEx: Access is denied. (0x5)
+[1218/213810:ERROR:process_info.cc(547)] ReadMemoryInfo failed
+[1218/213810:ERROR:process_reader_win.cc(142)] SuspendThread: Access is denied. (0x5)
+[1218/213810:ERROR:exception_snapshot_win.cc(87)] thread ID 17404 not found in process
+[1218/213810:WARNING:crash_report_exception_handler.cc(61)] ProcessSnapshotWin::Initialize failed
+[1218/213810:ERROR:scoped_process_suspend.cc(38)] NtResumeProcess: An attempt was made to access an exiting process.  (0xc000010a)
+[1226/180000:ERROR:process_info.cc(608)] range at 0xa6b6571400000000, size 0x1f6 fully unreadable
+[1226/180000:ERROR:process_info.cc(608)] range at 0xa6b6577c00000000, size 0x1f6 fully unreadable
+[1226/180000:ERROR:process_info.cc(608)] range at 0x0, size 0x1f6 fully unreadable
+[1226/180000:WARNING:in_range_cast.h(38)] value 2158870534776 out of range
+[1226/180000:WARNING:in_range_cast.h(38)] value 2158870532732 out of range
+[1226/180000:WARNING:in_range_cast.h(38)] value 2158870532840 out of range
+[1226/180000:WARNING:in_range_cast.h(38)] value 2158870532892 out of range
+[1226/180000:WARNING:in_range_cast.h(38)] value 2158870531714 out of range

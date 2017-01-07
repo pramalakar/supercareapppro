@@ -1,0 +1,18 @@
+<ion-view id="component" view-title="Component">
+    <ion-content>
+    	<section class = "home-container">
+	    	<div class = "row header">
+				<div class = "col text-center">
+	              <span>Please select component</h2>
+	            </div>
+	        </div>
+	    </section>
+    </ion-content>
+    <div class="row icon-row unlimited-items bar bar-footer">
+    	<div  ng-repeat="component in components" class="col-33 text-center">
+    		<button class="button button-clear btn-icon" data-ng-click="gotoCamera(component)">
+		       <img src="data:image/png;base64,{{component.image}}">		       
+		    </button>
+    	</div>
+    </div>
+</ion-view>

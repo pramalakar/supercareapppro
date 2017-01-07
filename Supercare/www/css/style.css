@@ -1,0 +1,231 @@
+/* Empty. Add your own CSS if you like */
+
+
+/*========================================================*/
+/*Vertically Middle of screen*/
+#login .scroll-content, #room .scroll-content, #camera .scroll-content {
+  display: table !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+#login .scroll, #room .scroll, #camera .scroll {
+  display: table-cell !important;
+  vertical-align: middle !important;
+  text-align: center !important;
+}
+
+#login.modal{
+  height: 100% !important;
+}
+
+#report-detail .header{
+  height: 200px;
+  overflow: hidden;
+}
+#report-detail .header img{
+  width: 100%;
+}
+/*End Vertically Middle*/
+
+/*Buttons*/
+.buttonRound{
+  border-radius: 22.5px;
+}
+.button-clear{
+  max-height: 80px !important;
+  overflow: hidden;
+}
+
+.facebook{
+  background-color: #3b5998;
+  border-radius: 0 !important;
+}
+
+.google{
+  background-color: #D34836;
+  border-radius: 0 !important;
+}
+
+/*End buttons*/
+
+
+
+.bar-footer {
+  height: auto !important;
+}
+
+/*Text-color*/
+.text-white{
+  color: #fff !important;
+}
+.text-black{
+  color: #000 !important;
+}
+
+/*End text-color*/
+
+
+/*Login modal*/
+#login input[type="text"], #login input[type="password"]{
+  height: 45px;
+  border: none;
+  border-radius: 22.5px;
+  background-color: #eee;
+  padding: 0 20px;
+  text-align: center;
+
+}
+#login .item-input{
+  padding-left: 0; 
+}
+
+#login .inputIconLeft, #login .inputIconRight{
+  position: absolute;
+  background: #fff;
+  width: 35px;
+  height: 35px;
+  top: calc(50% - 17.5px);
+  line-height: 35px;
+  border-radius: 17.5px;
+}
+#login .inputIconLeft{
+  margin-left: 5px;
+}
+#login .inputIconRight{
+  right: 0;
+  margin-right: 5px;
+}
+/* End Login modal*/
+
+/* Side menu */
+#side-menu .item{
+  border: none;
+}
+/* End Side Menu */
+
+/* Camera page*/
+#camera .btnCamera{
+  margin: 0 auto;
+  color: #000;
+  position: absolute;
+  left: calc(50% - 61px);
+  top: calc(50% - 23px);
+  z-index:10;
+}
+
+#camera ion-slides{
+  height:40%;
+}
+
+#camera .btnDelete{
+  position: absolute;
+  right:20px;
+  bottom:20px;
+  width:30px;
+  height: 30px;
+  border-radius: 15px;
+  z-index:11;
+}
+/*End Camera page*/
+
+
+
+/*=======================================================*/
+/*Vertically middle of div*/
+/*
+Example
+<div class="tablewrap">
+    <div class="tablecell valignmiddle">
+        <span class="">&#169; 2016 Malakar<!-- &#174; --></span>
+    </div>
+</div>*/
+.tablewrap{
+  display:table;
+  width:100%;
+  table-layout:fixed;
+}
+.tablecell{
+  display:table-cell;
+  float:none !important;
+}
+.valignmiddle{
+  vertical-align:middle;
+}
+/*End Vertically middle of div*/
+
+
+/*=============================================*/
+/*Automatically create columns for ng-repeat*/
+/* Example
+<div class="row unlimited-items">
+  <div class="col-33" ng-repeat="facility in facilities">
+    <p>{{facility}}</p>
+  </div>
+</div>
+*/
+.row.unlimited-items {
+  flex-wrap: wrap;
+}
+.row.unlimited-items .col{
+  flex: none;
+}
+/* End Automatically create columns for ng-repeat*/
+
+
+
+.home-container {
+     display: -webkit-flex;
+     -webkit-flex-direction: column;
+     height: 100%;
+}
+
+.header {
+     /*-webkit-flex: .25 !important;*/
+     -webkit-align-items: center;
+     background-color: #686868;
+     color: #fff;
+}
+.home-container .icon-row {
+  -webkit-flex: 1 !important;
+  -webkit-align-items: center;
+}
+
+.custom-tabs{
+  position: inherit;
+}
+
+
+.btn-icon{
+  width: 80px;
+  height: 80px;
+  padding: 10px;
+  background-color: #686868;
+}
+.btn-icon img{
+  width: 60px;
+  height: 60px;
+}
+
+/*#facility .bar-footer, #component .bar-footer{
+  height: auto !important;
+  padding: 20px 0 !important;
+}
+#facility .row .col-33, #component .row .col-33{
+
+  padding: 15px 0 !important;
+}*/
+
+.btnSquare{
+	display: block;
+	width: 100px;
+	height: 100px;
+	text-align: center;
+	color: #fff;
+    background-color: #0BA45C;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+a{
+	text-decoration: none;
+}
