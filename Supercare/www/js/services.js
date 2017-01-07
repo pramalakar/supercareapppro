@@ -309,6 +309,47 @@ angular.module('starter.services', [])
       })
     };
 
+    function addComponent(facilityId, newComponent, img){debugger;
+      return $q(function(resolve, reject){
+        var newComponentKey = ref.child(facilityId).child('components').push().key(); // Add empty child and get its key
+
+        var date = Firebase.ServerValue.TIMESTAMP;
+
+        var update = {};
+        update[newComponentKey] = {
+          "id": newComponentKey,
+          "date": date,
+          "name": newComponent,
+          "image": img
+        };
+
+        // After the .update() method is executed, it will trigger the .on() method.
+        ref.child(facilityId).child('components').update(update);
+        ref.child(facilityId).child('components').on('value', function(snapshot) {
+          // message update successful
+          resolve('Success Adding Component');
+        });
+        // ref.push({
+        //   "id": newFacilityKey,
+        //   "date": date,
+        //   "name": newFacility,
+        //   "image": img
+        // });
+      })
+    };
+
+    function deleteComponent(facilityId, componentId){debugger;
+      return $q(function(resolve, reject){
+        ref.child(facilityId).child('components').child(componentId).remove(function(error){
+          if(!error){
+            // delete successful
+            resolve('Delete successful');
+          }else{
+            reject('Delete Unsuccessful');
+          }
+        });
+      })
+    };
     // function facilityById(facilityId) {
     //     var selectedFacility = null;
     //     angular.forEach(facilities, function (facility) {debugger;
@@ -322,7 +363,9 @@ angular.module('starter.services', [])
     return {
         getAll: getAll,
         addFacility: addFacility,
-        deleteFacility: deleteFacility
+        deleteFacility: deleteFacility,
+        addComponent: addComponent,
+        deleteComponent: deleteComponent
         // facilityById: facilityById
     };
 })

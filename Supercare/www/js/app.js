@@ -255,11 +255,23 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     }
   })
   .state('app.addremove-component', {
-    url: '/addremove-component',
+    url: '/addremove-component/:selectedFacility',
     views: {
       'menuContent': {
         templateUrl: 'templates/addremove-component.html',
         controller: 'AddremoveComponentCtrl'
+      }
+    },
+    data : {
+        requiredRoles: ["admin"]
+    }
+  })
+  .state('app.add-component', {
+    url: '/add-component',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/add-component.html',
+        controller: 'AddComponentCtrl'
       }
     },
     data : {

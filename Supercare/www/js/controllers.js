@@ -295,7 +295,7 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('AddremoveFacilityCtrl', function($scope, FileService, Facilities, $ionicPopup, $ionicListDelegate, FIREBASE_URL) {
+.controller('AddremoveFacilityCtrl', function($scope, $state, FileService, Facilities, $ionicPopup, $ionicListDelegate, FIREBASE_URL) {
 	$scope.facilities = [];
 	$scope.$on('$ionicView.enter', function() {
       	$scope.facilities = Facilities.getAll();
@@ -322,6 +322,49 @@ angular.module('starter.controllers', [])
 		            var alertPopup = $ionicPopup.alert({
 		            title: "Error",
 		            template: "Error in deleting facility."
+		            });
+		    	});
+
+	     	} else {
+	      		// console.log('Deletion canceled !');
+	     	}
+	   	});
+    	$ionicListDelegate.closeOptionButtons();
+    }
+
+    $scope.gotoComponent = function(facility){debugger;
+		$state.go('app.addremove-component', {selectedFacility: JSON.stringify(facility)});
+	};
+})
+
+.controller('AddremoveComponentCtrl', function($scope, $stateParams, FileService, Facilities, $ionicPopup, $ionicListDelegate, FIREBASE_URL) {
+	$scope.components = [];
+	$scope.$on('$ionicView.enter', function() {
+      	$scope.facility = JSON.parse($stateParams.selectedFacility);
+      	$scope.components = $scope.facility.components;
+    })
+
+    $scope.delete = function(id, index){debugger;
+    	var confirmPopup = $ionicPopup.confirm({
+	     	title: 'Delete',
+	     	template: 'Are you sure you want to delete this?'
+	   	});
+
+	   	confirmPopup.then(function(res) {
+	     	if(res) {
+	       		Facilities.deleteComponent($scope.facility.id, id)// ( delete from this facility, delete this component )
+		    	.then(function(data){
+		    		debugger;
+		    		$scope.components.splice(index, 1);
+		    		var alertPopup = $ionicPopup.alert({
+			            title: "Success",
+			            template: "Successfully deleted component."
+		            });
+		    	},function(error){
+		    		// Error
+		            var alertPopup = $ionicPopup.alert({
+		            title: "Error",
+		            template: "Error in deleting component."
 		            });
 		    	});
 
@@ -393,6 +436,80 @@ angular.module('starter.controllers', [])
  	$scope.addFacility = function(newFacility){
  		var img = $scope.images[0].imgData;
  		Facilities.addFacility(newFacility, img)
+ 		.then(function(data){
+ 			if(data){
+ 				var alertPopup = $ionicPopup.alert({
+	            title: "Success",
+	            template: "Successfully added new facility."
+	            });
+ 			}else{
+ 				var alertPopup = $ionicPopup.alert({
+	            title: "Error",
+	            template: "Error in adding new facility."
+	            });
+ 			}
+ 		});
+ 	}
+})
+.controller('AddComponentCtrl', function($scope, $cordovaDevice, $cordovaFile, $ionicPlatform, $cordovaEmailComposer, $ionicActionSheet, ImageService, FileService, Facilities, FIREBASE_URL, $ionicPopup) {
+
+	$scope.$on('$ionicView.leave', function() {
+      	// clear the image from localStorage
+      	FileService.removeImages();
+    })
+
+	$ionicPlatform.ready(function() {
+	    $scope.images = FileService.images();
+	    // $scope.$apply();
+	})
+	 
+	$scope.addMedia = function() {
+	    $scope.hideSheet = $ionicActionSheet.show({
+	      buttons: [
+	        { text: 'Take photo' },
+	        { text: 'Photo from library' }
+	      ],
+	      titleText: 'Add images',
+	      cancelText: 'Cancel',
+	      buttonClicked: function(index) {
+	        $scope.addImage(index);
+	      }
+	    });
+	}
+	 
+	$scope.addImage = function(type) {
+	    $scope.hideSheet();
+	    ImageService.handleMediaDialog(type).then(function() {
+	      $scope.$apply();
+	    });
+	}
+
+	  // delete image
+	   // Triggered on a button click, or some other target
+	$scope.deleteImage = function(img) {
+	   // Show the action sheet
+	   var hideSheet = $ionicActionSheet.show({
+	     buttons: [
+	       { text: 'Delete' }
+	     ],
+	     titleText: 'Delete Image',
+	     cancelText: 'Cancel',
+	     cancel: function() {
+	          // add cancel code..
+	        },
+	     buttonClicked: function(index) {
+	      $scope.images.splice(img,1);
+	      window.localStorage.setItem("images", images);
+	      $scope.hideSheet();
+	      $scope.$apply();
+	     }
+	   });
+ 	}
+
+ 	// Store to firebase
+ 	$scope.addComponent = function(newComponent){
+ 		var img = $scope.images[0].imgData;
+ 		Facilities.addComponent(newComponent, img)
  		.then(function(data){
  			if(data){
  				var alertPopup = $ionicPopup.alert({
